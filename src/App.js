@@ -20,7 +20,8 @@ import {Card,CardContent,Typography} from "@material-ui/core"
 function App() {
 
   const [countries,setCountries]=useState([]);
-  const [country,setCountry]=useState("WorldWide")
+  const [country,setCountry]=useState("WorldWide");
+  const [countryInfo,setCountryInfo]=useState({});
 
   useEffect(() => {
    //async -> send a request ,wait for it , do something with it
@@ -43,8 +44,22 @@ function App() {
       
   const onCountryChange=async (event)=>{
     const countryCode=event.target.value;
-    setCountry(countryCode)
-  }
+    const url = countryCode === 'WorldWide' 
+    ? 'https://disease.sh/v3/covid-19/all' 
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+   await fetch(url)
+    .then((response) => response.json())
+    .then((data)=>{
+      setCountry(countryCode);
+
+      //All of the data from the country response
+        setCountryInfo(data);
+    });
+  };
+console.log("country INFO",countryInfo);
+  
+
   return (
     <div className="app">
       <div className="app__left">
@@ -74,11 +89,11 @@ function App() {
       
       <div className="app__stats">
           {/** InfoBoxes title=corona virus cases */}
-          <InfoBox title="Coronavirus Cases" cases={123} total={2000}   />
+          <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases}   />
           {/** InfoBoxes title corona recoveries */}
-          <InfoBox title="Recovered" cases={123} total={2000} />
+          <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
           {/** InfoBoxes */}
-          <InfoBox title="Deaths" cases={123} total={2000} />
+          <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
       </div>
       {/** Title + Select input dropdown field */}
 
@@ -90,7 +105,7 @@ function App() {
             
             <CardContent>
                 {/** Table */}
-                
+
                 {/** Graph */}
 
 
