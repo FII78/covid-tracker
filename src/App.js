@@ -7,6 +7,7 @@ import {
   Select
 } from "@material-ui/core"
 import InfoBox from "./InfoBox"
+import Map from "./Map"
 
 //STATE = How to write a variable in REACT
 //USEEFFECT= runs a piece of code based on a given condition
@@ -85,6 +86,7 @@ function App() {
       {/** Graph */}
 
       {/** Map */}
+      <Map/>
 
     </div>
   );
