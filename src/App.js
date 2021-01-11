@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core"
 import InfoBox from "./InfoBox"
 import Map from "./Map"
+import {Card,CardContent,Typography} from "@material-ui/core"
 
 //STATE = How to write a variable in REACT
 //USEEFFECT= runs a piece of code based on a given condition
@@ -46,7 +47,8 @@ function App() {
   }
   return (
     <div className="app">
-       <div className="app__header">
+      <div className="app__left">
+      <div className="app__header">
         <h1>COVID-19 TRACKER</h1>
         <FormControl className="app__dropdown">
             <Select
@@ -80,14 +82,20 @@ function App() {
       </div>
       {/** Title + Select input dropdown field */}
 
-    
-
-      {/** Table */}
-      {/** Graph */}
-
       {/** Map */}
       <Map/>
 
+      </div>
+      <Card className="app__right">
+            
+            <CardContent>
+                {/** Table */}
+                
+                {/** Graph */}
+
+
+            </CardContent>
+      </Card>
     </div>
   );
 }
