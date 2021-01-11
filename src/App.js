@@ -9,6 +9,7 @@ import {
 import InfoBox from "./InfoBox"
 import Map from "./Map"
 import Table from "./Table"
+import {sortData} from "./util"
 import {Card,CardContent,Typography} from "@material-ui/core"
 
 //STATE = How to write a variable in REACT
@@ -48,8 +49,9 @@ useEffect(()=>{
            ,
            value: country.countryInfo.iso2   //the iso representation
          }));
-
-       setTableData(data);
+       
+         const sortedData=sortData(data);
+       setTableData(sortedData);
        setCountries(countries)
      });
    };
