@@ -1,17 +1,17 @@
 import React from 'react'
-
+import './Table.css'
 
  {/**Emmet */}
 function Table({countries}) {
     return (
         <div className="table">
-            {countries.map(country=>{
+            {countries.map(({country,cases})=>(
                 <tr>
                
-                    <td>{country.country}</td>
-                    <td></td>
+                    <td>{country}</td>
+                    <td><strong>{cases}</strong></td>
                 </tr>
-            })}
+            ))}
         </div>
         
     )

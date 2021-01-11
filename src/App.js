@@ -4,11 +4,11 @@ import './App.css';
 import {
   MenuItem,
   FormControl,
-  Select,
-  Table
+  Select
 } from "@material-ui/core"
 import InfoBox from "./InfoBox"
 import Map from "./Map"
+import Table from "./Table"
 import {Card,CardContent,Typography} from "@material-ui/core"
 
 //STATE = How to write a variable in REACT
