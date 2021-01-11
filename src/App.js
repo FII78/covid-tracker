@@ -6,6 +6,7 @@ import {
   FormControl,
   Select
 } from "@material-ui/core"
+import InfoBox from "./InfoBox"
 
 //STATE = How to write a variable in REACT
 //USEEFFECT= runs a piece of code based on a given condition
@@ -40,7 +41,7 @@ function App() {
       
   const onCountryChange=async (event)=>{
     const countryCode=event.target.value;
-    console.log("Country code >>>",countryCode)
+    setCountry(countryCode)
   }
   return (
     <div className="app">
@@ -68,12 +69,17 @@ function App() {
         </FormControl>
        </div>
       
-      {/** Header */}
+      <div className="app__stats">
+          {/** InfoBoxes title=corona virus cases */}
+          <InfoBox title="Coronavirus Cases" cases={123} total={2000}   />
+          {/** InfoBoxes title corona recoveries */}
+          <InfoBox title="Recovered" cases={123} total={2000} />
+          {/** InfoBoxes */}
+          <InfoBox title="Deaths" cases={123} total={2000} />
+      </div>
       {/** Title + Select input dropdown field */}
 
-      {/** InfoBoxes */}
-      {/** InfoBoxes */}
-      {/** InfoBoxes */}
+    
 
       {/** Table */}
       {/** Graph */}
