@@ -4,7 +4,8 @@ import './App.css';
 import {
   MenuItem,
   FormControl,
-  Select
+  Select,
+  Table
 } from "@material-ui/core"
 import InfoBox from "./InfoBox"
 import Map from "./Map"
@@ -20,8 +21,11 @@ import {Card,CardContent,Typography} from "@material-ui/core"
 function App() {
 
   const [countries,setCountries]=useState([]);
+  const [tableData,setTableData]=useState([]);
+
   const [country,setCountry]=useState("WorldWide");
   const [countryInfo,setCountryInfo]=useState({});
+  
 
 useEffect(()=>{
   fetch("https://disease.sh/v3/covid-19/all")
@@ -45,6 +49,7 @@ useEffect(()=>{
            value: country.countryInfo.iso2   //the iso representation
          }));
 
+       setTableData(data);
        setCountries(countries)
      });
    };
@@ -115,7 +120,8 @@ console.log("country INFO",countryInfo);
             
             <CardContent>
                 {/** Table */}
-
+              <h3>Live cases by country</h3>
+              <Table countries={tableData}/>
                 {/** Graph */}
 
 
