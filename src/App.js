@@ -122,6 +122,7 @@ console.log("country INFO",countryInfo);
           {/** InfoBoxes title=corona virus cases */}
           <InfoBox 
           active={casesType === "cases"}
+          isRed
           onClick={e=> setCasesType('cases')}
           title="Coronavirus Cases" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
@@ -136,6 +137,7 @@ console.log("country INFO",countryInfo);
           total={prettyPrintStat(countryInfo.recovered)} />
           {/** InfoBoxes */}
           <InfoBox 
+           isRed
            active={casesType === "deaths"}
            onClick={e=> setCasesType('deaths')}
            title="Deaths"
