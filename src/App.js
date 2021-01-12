@@ -28,6 +28,10 @@ function App() {
 
   const [country,setCountry]=useState("WorldWide");
   const [countryInfo,setCountryInfo]=useState({});
+
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
+
   
 
 useEffect(()=>{
@@ -117,7 +121,10 @@ console.log("country INFO",countryInfo);
       {/** Title + Select input dropdown field */}
 
       {/** Map */}
-      <Map/>
+      <Map 
+        center={mapCenter}
+        zoom={mapZoom}
+      />
 
       </div>
       <Card className="app__right">
