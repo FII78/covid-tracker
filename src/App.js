@@ -33,6 +33,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(3);
 
   const [mapCountries,setMapCountries]=useState([]);
+  const [casesType, setCasesType] = useState("cases");
   
 
 useEffect(()=>{
@@ -133,6 +134,7 @@ console.log("country INFO",countryInfo);
       {/** Map */}
       <Map 
         countries={mapCountries}
+        casesType={casesType}
         center={mapCenter}
         zoom={mapZoom}
       />
