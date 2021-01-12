@@ -32,6 +32,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.846, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
 
+  const [mapCountries,setMapCountries]=useState([]);
   
 
 useEffect(()=>{
@@ -61,6 +62,7 @@ useEffect(()=>{
        
       const sortedData=sortData(data);
        setTableData(sortedData);
+       setMapCountries(data); //all info in countries
        setCountries(countries)
       
      });
@@ -130,6 +132,7 @@ console.log("country INFO",countryInfo);
 
       {/** Map */}
       <Map 
+        countries={mapCountries}
         center={mapCenter}
         zoom={mapZoom}
       />
