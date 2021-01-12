@@ -123,11 +123,24 @@ console.log("country INFO",countryInfo);
       
       <div className="app__stats">
           {/** InfoBoxes title=corona virus cases */}
-          <InfoBox title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)}   />
+          <InfoBox 
+          onClick={e=> setCasesType('cases')}
+          title="Coronavirus Cases" 
+          cases={prettyPrintStat(countryInfo.todayCases)} 
+          total={prettyPrintStat(countryInfo.cases)}  
+           />
           {/** InfoBoxes title corona recoveries */}
-          <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} />
+          <InfoBox 
+          onClick={e=> setCasesType('recovered')}
+          title="Recovered" 
+          cases={prettyPrintStat(countryInfo.todayRecovered)} 
+          total={prettyPrintStat(countryInfo.recovered)} />
           {/** InfoBoxes */}
-          <InfoBox title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)} />
+          <InfoBox 
+           onClick={e=> setCasesType('deaths')}
+           title="Deaths"
+           cases={prettyPrintStat(countryInfo.todayDeaths)} 
+           total={prettyPrintStat(countryInfo.deaths)} />
       </div>
       {/** Title + Select input dropdown field */}
 
