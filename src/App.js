@@ -160,8 +160,8 @@ console.log("country INFO",countryInfo);
               <h3>Live cases by country</h3>
               <Table countries={tableData}/>
                 {/** Graph */}
-              <h3>Worldewide new Cases</h3>
-              <LineGraph/>
+              <h3>Worldewide new {casesType}</h3>
+              <LineGraph casesType={casesType}/>
 
             </CardContent>
       </Card>
