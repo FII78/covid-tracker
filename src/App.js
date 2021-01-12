@@ -11,6 +11,7 @@ import Map from "./Map"
 import Table from "./Table"
 import {sortData} from "./util"
 import LineGraph from "./LineGraph"
+import "leaflet/dist/leaflet.css";
 import {Card,CardContent,Typography} from "@material-ui/core"
 
 //STATE = How to write a variable in REACT
