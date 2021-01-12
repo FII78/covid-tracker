@@ -12,7 +12,7 @@ import Table from "./Table"
 import {sortData,prettyPrintStat} from "./util"
 import LineGraph from "./LineGraph"
 import "leaflet/dist/leaflet.css";
-import {Card,CardContent,Typography} from "@material-ui/core"
+import {Card,CardContent} from "@material-ui/core"
 
 //STATE = How to write a variable in REACT
 //USEEFFECT= runs a piece of code based on a given condition
@@ -86,9 +86,18 @@ useEffect(()=>{
 
       //All of the data from the country response
         setCountryInfo(data);
+        countryCode === 'WorldWide' 
+       
+        ? setMapCenter([34.846, -40.4796 ])
+        : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+
+        countryCode === 'WorldWide' 
+       
+        ? setMapZoom(3)
+        : setMapZoom(6)
+    
+         
         
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(5);
     });
   };
 console.log("country INFO",countryInfo);
@@ -160,8 +169,8 @@ console.log("country INFO",countryInfo);
               <h3>Live cases by country</h3>
               <Table countries={tableData}/>
                 {/** Graph */}
-              <h3>Worldewide new {casesType}</h3>
-              <LineGraph casesType={casesType}/>
+              <h3 className="app__graphTitle">Worldwide New {casesType}</h3>
+              <LineGraph className="app__graph" casesType={casesType}/>
 
             </CardContent>
       </Card>
