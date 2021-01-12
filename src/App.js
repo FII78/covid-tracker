@@ -29,7 +29,7 @@ function App() {
   const [country,setCountry]=useState("WorldWide");
   const [countryInfo,setCountryInfo]=useState({});
 
-  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapCenter, setMapCenter] = useState({ lat: 34.846, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
 
   
@@ -39,8 +39,9 @@ useEffect(()=>{
   .then(response=>response.json())
   .then((data)=>{
     setCountryInfo(data);
-  })
-},[])
+  
+  });
+},[]);
 
 
   useEffect(() => {
@@ -54,11 +55,14 @@ useEffect(()=>{
            name: country.country   //name of the country
            ,
            value: country.countryInfo.iso2   //the iso representation
-         }));
+         }),
+
+    );
        
-         const sortedData=sortData(data);
+      const sortedData=sortData(data);
        setTableData(sortedData);
        setCountries(countries)
+      
      });
    };
    getCountriesData();
@@ -67,6 +71,7 @@ useEffect(()=>{
   
   const onCountryChange=async (event)=>{
     const countryCode=event.target.value;
+
     const url = countryCode === 'WorldWide' 
     ? 'https://disease.sh/v3/covid-19/all' 
     : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
@@ -78,6 +83,9 @@ useEffect(()=>{
 
       //All of the data from the country response
         setCountryInfo(data);
+        
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(5);
     });
   };
 console.log("country INFO",countryInfo);
