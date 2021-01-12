@@ -113,10 +113,7 @@ console.log("country INFO",countryInfo);
                 <MenuItem value={country.value}>{country.name}</MenuItem>
               ))
             }
-            {/* <MenuItem value="worldwide">Worldwide</MenuItem>
-            <MenuItem value="worldwide">bla</MenuItem>
-            <MenuItem value="worldwide">ab</MenuItem>
-            <MenuItem value="worldwide">abl</MenuItem> */}
+     
             </Select>
         </FormControl>
        </div>
@@ -124,6 +121,7 @@ console.log("country INFO",countryInfo);
       <div className="app__stats">
           {/** InfoBoxes title=corona virus cases */}
           <InfoBox 
+          active={casesType === "cases"}
           onClick={e=> setCasesType('cases')}
           title="Coronavirus Cases" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
@@ -131,20 +129,20 @@ console.log("country INFO",countryInfo);
            />
           {/** InfoBoxes title corona recoveries */}
           <InfoBox 
+          active={casesType === "recovered"}
           onClick={e=> setCasesType('recovered')}
           title="Recovered" 
           cases={prettyPrintStat(countryInfo.todayRecovered)} 
           total={prettyPrintStat(countryInfo.recovered)} />
           {/** InfoBoxes */}
           <InfoBox 
+           active={casesType === "deaths"}
            onClick={e=> setCasesType('deaths')}
            title="Deaths"
            cases={prettyPrintStat(countryInfo.todayDeaths)} 
            total={prettyPrintStat(countryInfo.deaths)} />
       </div>
-      {/** Title + Select input dropdown field */}
-
-      {/** Map */}
+     
       <Map 
         countries={mapCountries}
         casesType={casesType}
