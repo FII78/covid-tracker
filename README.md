@@ -1,5 +1,7 @@
 # Getting Started with Covid-19 Tracker React App
 
+Check it out here: https://covidtrackermyversion.herokuapp.com/
+
 This project was bootstrapped with [Create React App].
 
 ## Available Scripts
